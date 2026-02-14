@@ -9,6 +9,8 @@ const ProcessorConfig = ({
     processorPriceInclGst, 
     customPrice, 
     setCustomPrice, 
+    customName,
+    setCustomName,
     includeProcessor, 
     setIncludeProcessor 
 }) => {
@@ -49,6 +51,17 @@ const ProcessorConfig = ({
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
                      <ChevronDown size={16} />
                 </div>
+            </div>
+
+            <div className="flex flex-col">
+                <span className="text-xs font-semibold text-gray-500 mb-1">Custom Processor Name</span>
+                 <input
+                    type="text"
+                    placeholder="Enter custom name (overrides selection)"
+                    value={customName}
+                    onChange={(e) => setCustomName(e.target.value)}
+                     className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                />
             </div>
 
             <div className="grid grid-cols-2 gap-4">

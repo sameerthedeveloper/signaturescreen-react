@@ -29,6 +29,7 @@ function MainPage() {
   const [msp, setMsp] = useState(''); // Price input in Area Config
   const [customPanelPrice, setCustomPanelPrice] = useState('');
   const [selectedProcessor, setSelectedProcessor] = useState('');
+  const [customProcessorName, setCustomProcessorName] = useState('');
   const [customProcessorPrice, setCustomProcessorPrice] = useState('');
   const [selectedInstall, setSelectedInstall] = useState('');
   const [customInstallPrice, setCustomInstallPrice] = useState('');
@@ -179,7 +180,7 @@ function MainPage() {
     combinedPanelPrice: combinedPanelPriceExclGst.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2}),
     panelGST: totalPanelPriceInclGst.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2}),
     
-    processor: processorObj ? processorObj.label : '',
+    processor: customProcessorName || (processorObj ? processorObj.label : ''),
     processorCost: finalProcessorCost.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2}),
     processorGST: processorPriceInclGst.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2}),
     
@@ -281,6 +282,8 @@ function MainPage() {
                 processorPriceInclGst={processorPriceInclGst.toLocaleString(undefined, {minimumFractionDigits: 2})}
                 customPrice={customProcessorPrice}
                 setCustomPrice={setCustomProcessorPrice}
+                customName={customProcessorName}
+                setCustomName={setCustomProcessorName}
                 includeProcessor={includeProcessor}
                 setIncludeProcessor={setIncludeProcessor}
             />
