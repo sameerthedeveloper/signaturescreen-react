@@ -13,7 +13,7 @@ import SiteControl from './pages/admin/SiteControl';
 function App() {
   return (
     <DataProvider>
-      <Router>
+      <Router basename="/signaturescreen-react">
         <Routes>
           <Route path="/" element={<MainPage />} />
           
