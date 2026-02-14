@@ -1,0 +1,70 @@
+{
+    "series": [
+        {
+            "value": "AS5",
+            "label": "AS5 Series",
+            "hPixel": 270,
+            "vPixel": 480,
+            "cost": 86735
+        },
+        {
+            "value": "AS6",
+            "label": "AS6 Series",
+            "hPixel": 270,
+            "vPixel": 480,
+            "cost": 86735
+        }
+    ],
+    "processors": [
+        {
+            "value": "1",
+            "label": "CF40-4K-HDR-40P",
+            "cost": 325000
+        },
+        {
+            "value": "2",
+            "label": "CF20-4K-SDR-80P",
+            "cost": 290000
+        },
+        {
+            "value": "3",
+            "label": "CF40-4K-HDR-80P",
+            "cost": 700000
+        },
+        {
+            "value": "4",
+            "label": "CF40-4K-SDR-160P",
+            "cost": 650000
+        },
+        {
+            "value": "5",
+            "label": "CF60-4K-HDR-120P",
+            "cost": 925000
+        },
+        {
+            "value": "6",
+            "label": "CF60-4K-SDR-240P",
+            "cost": 850000
+        }
+    ],
+    "installations": [
+        {
+            "value": "1",
+            "cost": 100000,
+            "gst": 118000,
+            "label": "1,00,000"
+        },
+        {
+            "value": "2",
+            "cost": 150000,
+            "gst": 186000,
+            "label": "1,50,000"
+        },
+        {
+            "value": "3",
+            "cost": 200000,
+            "gst": 254000,
+            "label": "2,00,000"
+        }
+    ]
+}
