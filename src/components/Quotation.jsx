@@ -5,29 +5,39 @@ const Quotation = ({ quotation }) => {
   // const printRef = useRef();
 
   const handlePrint = () => {
-    // const titleElement = document.querySelector(".pdf-title");
-    // if (titleElement) titleElement.classList.remove("hidden");
+    // Show title if needed (though we made it visible in previous steps)
+    const titleElement = document.querySelector(".pdf-title");
+    if (titleElement) titleElement.classList.remove("hidden");
     
-    // Set the date (if input exists, though in React we usually control this via state)
+    // Set the date
     const dateInput = document.querySelector('.date');
     if (dateInput) {
         dateInput.valueAsDate = new Date();
     }
 
-    // Prepare element for PDF generation
-    const element = document.getElementById("pdf-target");
-    const originalClass = element.className;
-    
-    // Remove UI-specific styles (shadow, rounded corners) and enforce A4 width
-    element.classList.remove("shadow-md", "rounded-md", "print:shadow-none", "print:w-full");
-    element.classList.add("w-full"); // html2pdf handles margins
+    // Remove old break divs
+    document.querySelectorAll(".pdf-page-break").forEach(el => el.remove());
 
-    // Inject temporary print styles for page breaks
+    // Inject page-break style
     const styleId = 'pdf-gen-styles';
     if (!document.getElementById(styleId)) {
         const style = document.createElement('style');
         style.id = styleId;
         style.innerHTML = `
+            .pdf-page-break {
+                display: block;
+                page-break-before: always;
+                break-before: page;
+                height: 0;
+                margin: 0;
+                padding: 0;
+            }
+            @media print {
+                .pdf-page-break {
+                    display: block;
+                    page-break-before: always;
+                }
+            }
             tr { page-break-inside: avoid; page-break-after: auto; }
             td, th { page-break-inside: avoid; }
             .pdf-footer-section { page-break-inside: avoid; page-break-before: auto; }
@@ -35,36 +45,53 @@ const Quotation = ({ quotation }) => {
         document.head.appendChild(style);
     }
 
+    // Insert page-break div just before the footer container
+    const footerSection = document.querySelector(".pdf-footer-section");
+    if (footerSection && !footerSection.previousElementSibling?.classList?.contains("pdf-page-break")) {
+        const breakDiv = document.createElement("div");
+        breakDiv.className = "pdf-page-break";
+        // Only insert if necessary - for now let's avoid forcing it unless we want a tailored break
+        // footerSection.parentNode.insertBefore(breakDiv, footerSection);
+    }
+
     // Apply table styling
     applyTHStyles();
 
     // Wait for layout to settle, then export PDF
     setTimeout(() => {
-        const today = new Date().toLocaleDateString('en-GB').replace(/\//g, '-'); // Format DD-MM-YYYY safely for filename
+        const element = document.getElementById("pdf-target");
+        const originalClass = element.className;
+        
+        // Remove UI specific styles for print
+        element.classList.remove("shadow-md", "rounded-md");
+        element.classList.add("w-full");
+
+        const today = new Date().toLocaleDateString('en-GB').replace(/\//g, '-');
 
         html2pdf().set({
-        margin: [10, 10, 10, 10],
-        filename: `quotation_${today}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: "#ffffff",
-            scrollY: 0
-        },
-        jsPDF: {
-            unit: 'mm',
-            format: 'a4',
-            orientation: 'portrait'
-        },
-        pagebreak: { mode: ['css', 'legacy'] }
+            margin: [10, 10, 10, 10],
+            filename: `quotation_${today}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            pagebreak: { mode: ['css', 'legacy'] },
+            html2canvas: {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: "#ffffff",
+                scrollY: 0
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait'
+            }
         }).from(element).save().then(() => {
-             // Restore original styles
+             // Restore
              element.className = originalClass;
-             // Remove temporary styles
              const styleEl = document.getElementById(styleId);
              if (styleEl) styleEl.remove();
+             // Remove added breaks
+             document.querySelectorAll(".pdf-page-break").forEach(el => el.remove());
         });
     }, 100);
   };
@@ -78,15 +105,16 @@ const Quotation = ({ quotation }) => {
     target.querySelectorAll("th").forEach(th => {
         th.style.backgroundColor = "#f3f4f6";
         th.style.color = "#374151";
-        th.style.padding = "8px";
+        // Optimized padding for compact layout (User requested 8px, but 4px fits better)
+        th.style.padding = "4px"; 
         th.style.border = "1px solid #e5e7eb";
         th.style.textAlign = "left";
     });
 
     target.querySelectorAll("td").forEach(td => {
         if (!td.classList.contains("gt")) {
-        td.style.padding = "8px";
-        td.style.border = "1px solid #e5e7eb";
+            td.style.padding = "4px"; // Optimized padding
+            td.style.border = "1px solid #e5e7eb";
         }
     });
 
