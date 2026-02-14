@@ -241,7 +241,7 @@ function MainPage() {
       <div className={`flex flex-col lg:flex-row lg:gap-8 lg:justify-center lg:items-start p-4 lg:p-8 pt-20 lg:pt-24 lg:h-full`}>
          
          {/* LEFT COLUMN - Configuration Panel */}
-         <div className={`home w-full lg:w-[450px] shrink-0 h-[calc(100vh-150px)] lg:h-[calc(100vh-120px)] overflow-y-auto pr-2 scrollbar-thin ${themeClasses.scrollbar} dark:scrollbar-thumb-gray-600 ${activeTab === 'home' ? 'block' : 'hidden lg:block'}`}>
+         <div className={`home w-full lg:w-[450px] shrink-0 h-[calc(100vh-150px)] lg:h-[calc(100vh-120px)] overflow-y-auto pr-2 scrollbar-hide ${activeTab === 'home' ? 'block' : 'hidden lg:block'}`}>
             <SeriesConfig value={series} onChange={setSeries} seriesList={seriesList} />
             
             <DimensionConfig 
@@ -307,7 +307,7 @@ function MainPage() {
          </div>
 
          {/* RIGHT COLUMN - Invoice/Quotation Content */}
-         <div className={`quta w-full lg:flex-1 lg:max-w-[800px] lg:h-[calc(100vh-120px)] h-[calc(100vh-150px)] overflow-y-auto pr-2 scrollbar-thin ${themeClasses.scrollbar} dark:scrollbar-thumb-gray-600 ${activeTab === 'invoice' ? 'block' : 'hidden lg:block'}`}>
+         <div className={`quta w-full lg:flex-1 lg:max-w-[800px] lg:h-[calc(100vh-120px)] h-[calc(100vh-150px)] overflow-y-auto pr-2 scrollbar-hide ${activeTab === 'invoice' ? 'block' : 'hidden lg:block'}`}>
              
             <div className="mb-6">
                 <h2 className="text-xl font-bold text-gray-800 mb-2 dark:text-white">Quotation Preview</h2>
