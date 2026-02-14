@@ -5,6 +5,7 @@ import seedData from '../data/seed.json';
 
 const DataContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useData = () => {
     return useContext(DataContext);
 };

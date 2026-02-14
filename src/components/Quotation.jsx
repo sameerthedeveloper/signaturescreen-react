@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import html2pdf from 'html2pdf.js';
 
 const Quotation = ({ quotation }) => {
-  const printRef = useRef();
+  // const printRef = useRef();
 
   const handlePrint = () => {
     const titleElement = document.querySelector(".pdf-title");

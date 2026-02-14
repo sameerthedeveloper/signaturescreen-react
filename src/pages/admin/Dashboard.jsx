@@ -3,7 +3,7 @@ import { useData } from '../../contexts/DataContext';
 import { Package, Cpu, Layers, Users } from 'lucide-react';
 
 const Dashboard = () => {
-  const { seriesList, processorList, installOptions, refreshData, uploadSeedData } = useData();
+  const { seriesList, processorList, installOptions } = useData();
 
   const stats = {
       seriesCount: seriesList.length,

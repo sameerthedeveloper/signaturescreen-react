@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const InstallationConfig = ({ 
     installOptions, 
     selectedInstall, 
     setSelectedInstall, 
-    installPrice, 
+    // installPrice, 
     installCustomPrice, 
     setInstallCustomPrice, 
     installPriceInclGst, 

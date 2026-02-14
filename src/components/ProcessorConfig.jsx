@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const ProcessorConfig = ({ 
     processorList, 
     selectedProcessor, 
     setSelectedProcessor, 
-    processorPriceExclGst, 
+    // processorPriceExclGst, 
     processorPriceInclGst, 
     customPrice, 
     setCustomPrice, 
