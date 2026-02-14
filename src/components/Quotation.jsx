@@ -5,8 +5,8 @@ const Quotation = ({ quotation }) => {
   // const printRef = useRef();
 
   const handlePrint = () => {
-    const titleElement = document.querySelector(".pdf-title");
-    if (titleElement) titleElement.classList.remove("hidden");
+    // const titleElement = document.querySelector(".pdf-title");
+    // if (titleElement) titleElement.classList.remove("hidden");
     
     // Set the date (if input exists, though in React we usually control this via state)
     const dateInput = document.querySelector('.date');
@@ -100,12 +100,10 @@ const Quotation = ({ quotation }) => {
     <div className="flex flex-col m-4 lg:m-0 bg-white">
       <div id="pdf-target" className="max-w-[210mm] mx-auto p-4 lg:p-8 bg-white text-black text-sm font-sans shadow-md rounded-md print:shadow-none print:w-full">
         
-        {/* PDF Title - Hidden initially, shown by script */}
-        <h1 className="pdf-title text-2xl font-bold mb-4 text-center hidden">QUOTATION</h1>
-        {/* Visible title for screen */}
-        <h1 className="text-2xl font-bold mb-4 text-center block pdf-title:hidden">QUOTATION</h1>
+        {/* Unified Title */}
+        <h1 className="text-2xl font-bold mb-8 text-center uppercase tracking-widest">QUOTATION</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div>
                 <h2 className="font-semibold">From:</h2>
                 <p>CINEMA FOCUS (INDIA) PRIVATE LIMITED</p>
@@ -127,7 +125,7 @@ const Quotation = ({ quotation }) => {
         </div>
 
         {/* Details Table */}
-        <table className="w-full table-auto border border-collapse mb-6 text-left text-sm">
+        <table className="w-full table-auto border border-collapse mb-8 text-left text-sm">
             <tbody>
                 <tr className="border border-gray-300">
                     <th className="p-2 bg-gray-100 w-1/2">Signature Screen</th>
@@ -185,7 +183,7 @@ const Quotation = ({ quotation }) => {
         </table>
 
         {/* Pricing Table */}
-        <table className="w-full table-auto border border-collapse text-left mb-6 text-sm">
+        <table className="w-full table-auto border border-collapse text-left mb-8 text-sm">
             <thead className="bg-gray-100">
                 <tr>
                     <th className="p-2 border border-gray-300">Item</th>
@@ -243,7 +241,7 @@ const Quotation = ({ quotation }) => {
 
 
         <div className="mt-4 pdf-footer-section break-inside-avoid" style={{ pageBreakInside: 'avoid' }}>
-            <h1 className="text-lg font-bold text-gray-800 mb-4">Terms & Conditions</h1>
+            <h1 className="text-lg font-bold text-gray-800 mb-6">Terms & Conditions</h1>
             <div className="text-sm text-gray-600 space-y-4">
                 <div>
                     <strong>Delivery Details:</strong><br/>
