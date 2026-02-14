@@ -105,15 +105,15 @@ const Quotation = ({ quotation }) => {
     target.querySelectorAll("th").forEach(th => {
         th.style.backgroundColor = "#f3f4f6";
         th.style.color = "#374151";
-        // Optimized padding for compact layout (User requested 8px, but 4px fits better)
-        th.style.padding = "4px"; 
+        // User requested more padding
+        th.style.padding = "8px"; 
         th.style.border = "1px solid #e5e7eb";
         th.style.textAlign = "left";
     });
 
     target.querySelectorAll("td").forEach(td => {
         if (!td.classList.contains("gt")) {
-            td.style.padding = "4px"; // Optimized padding
+            td.style.padding = "8px"; // User requested more padding
             td.style.border = "1px solid #e5e7eb";
         }
     });
@@ -156,56 +156,56 @@ const Quotation = ({ quotation }) => {
         <table className="w-full table-auto border border-collapse mb-4 text-left text-xs">
             <tbody>
                 <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100 w-1/2">Signature Screen</th>
-                    <td className="p-1">{quotation.series}</td>
+                    <th className="p-2 bg-gray-100 w-1/2">Signature Screen</th>
+                    <td className="p-2">{quotation.series}</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">Screen W x H</th>
-                    <td className="p-1">{quotation.whpanels}</td>
+                    <th className="p-2 bg-gray-100">Screen W x H</th>
+                    <td className="p-2">{quotation.whpanels}</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">Panel Count</th>
-                    <td className="p-1">{quotation.totalPanels} {quotation.extraPanels > 0 && `(+${quotation.extraPanels} Spares)`}</td>
+                    <th className="p-2 bg-gray-100">Panel Count</th>
+                    <td className="p-2">{quotation.totalPanels} {quotation.extraPanels > 0 && `(+${quotation.extraPanels} Spares)`}</td>
                 </tr>
                 {quotation.extraPanels > 0 && (
                     <tr className="border border-gray-300">
-                        <th className="p-1 bg-gray-100">Total Panels (with Spares)</th>
-                        <td className="p-1">{quotation.grandTotalPanels}</td>
+                        <th className="p-2 bg-gray-100">Total Panels (with Spares)</th>
+                        <td className="p-2">{quotation.grandTotalPanels}</td>
                     </tr>
                 )}
                 <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">Diagonal</th>
-                    <td className="p-1">{quotation.diagonal} inches</td>
+                    <th className="p-2 bg-gray-100">Diagonal</th>
+                    <td className="p-2">{quotation.diagonal} inches</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">Area (sq.ft)</th>
-                    <td className="p-1">{quotation.areaft} ft²</td>
+                    <th className="p-2 bg-gray-100">Area (sq.ft)</th>
+                    <td className="p-2">{quotation.areaft} ft²</td>
                 </tr>
                 
                 <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">W/H (mm) (With Wood Work)</th>
-                    <td className="p-1">{quotation.wwMmStr} mm</td>
+                    <th className="p-2 bg-gray-100">W/H (mm) (With Wood Work)</th>
+                    <td className="p-2">{quotation.wwMmStr} mm</td>
                 </tr>
                  <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">W/H (in) (With Wood Work)</th>
-                    <td className="p-1">{quotation.wwInStr} in</td>
+                    <th className="p-2 bg-gray-100">W/H (in) (With Wood Work)</th>
+                    <td className="p-2">{quotation.wwInStr} in</td>
                 </tr>
                  <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">W/H (mm) (Without Wood Work)</th>
-                    <td className="p-1">{quotation.hwMmStr} mm</td>
+                    <th className="p-2 bg-gray-100">W/H (mm) (Without Wood Work)</th>
+                    <td className="p-2">{quotation.hwMmStr} mm</td>
                 </tr>
                  <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">W/H (in) (Without Wood Work)</th>
-                    <td className="p-1">{quotation.hwInStr} in</td>
+                    <th className="p-2 bg-gray-100">W/H (in) (Without Wood Work)</th>
+                    <td className="p-2">{quotation.hwInStr} in</td>
                 </tr>
 
                 <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">Resolution</th>
-                    <td className="p-1">{quotation.resolution}</td>
+                    <th className="p-2 bg-gray-100">Resolution</th>
+                    <td className="p-2">{quotation.resolution}</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-1 bg-gray-100">Total Pixels</th>
-                    <td className="p-1">{quotation.pixels}</td>
+                    <th className="p-2 bg-gray-100">Total Pixels</th>
+                    <td className="p-2">{quotation.pixels}</td>
                 </tr>
             </tbody>
         </table>
@@ -214,55 +214,55 @@ const Quotation = ({ quotation }) => {
         <table className="w-full table-auto border border-collapse text-left mb-4 text-xs">
             <thead className="bg-gray-100">
                 <tr>
-                    <th className="p-1 border border-gray-300">Item</th>
-                    <th className="p-1 border border-gray-300">Details</th>
-                    <th className="p-1 border border-gray-300">Amount (excl GST)</th>
-                    <th className="p-1 border border-gray-300">Amount (incl GST)</th>
+                    <th className="p-2 border border-gray-300">Item</th>
+                    <th className="p-2 border border-gray-300">Details</th>
+                    <th className="p-2 border border-gray-300">Amount (excl GST)</th>
+                    <th className="p-2 border border-gray-300">Amount (incl GST)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr className="border border-gray-300">
-                    <td className="p-1 border border-gray-300">Signature Screen</td>
-                    <td className="p-1 border border-gray-300"></td>
-                     <td className="p-1 border border-gray-300">{quotation.panelprice}</td>
-                    <td className="p-1 border border-gray-300">{quotation.extraPanels > 0 ? '' : quotation.panelGST}</td>
+                    <td className="p-2 border border-gray-300">Signature Screen</td>
+                    <td className="p-2 border border-gray-300"></td>
+                     <td className="p-2 border border-gray-300">{quotation.panelprice}</td>
+                    <td className="p-2 border border-gray-300">{quotation.extraPanels > 0 ? '' : quotation.panelGST}</td>
                 </tr>
                  {quotation.extraPanels > 0 && (
                     <tr className="border border-gray-300">
-                        <td className="p-1 border border-gray-300">Additional Panels (Spares)</td>
-                        <td className="p-1 border border-gray-300">{quotation.extraPanels} Nos</td>
-                        <td className="p-1 border border-gray-300">{quotation.extraPanelsCost}</td>
-                        <td className="p-1 border border-gray-300"></td>
+                        <td className="p-2 border border-gray-300">Additional Panels (Spares)</td>
+                        <td className="p-2 border border-gray-300">{quotation.extraPanels} Nos</td>
+                        <td className="p-2 border border-gray-300">{quotation.extraPanelsCost}</td>
+                        <td className="p-2 border border-gray-300"></td>
                     </tr>
                 )}
                 {quotation.hasProcessor && (
                     <tr className="border border-gray-300">
-                        <td className="p-1 border border-gray-300">Processor</td>
-                        <td className="p-1 border border-gray-300">{quotation.processor}</td>
-                        <td className="p-1 border border-gray-300">{quotation.processorCost}</td>
-                        <td className="p-1 border border-gray-300">{quotation.processorGST}</td>
+                        <td className="p-2 border border-gray-300">Processor</td>
+                        <td className="p-2 border border-gray-300">{quotation.processor}</td>
+                        <td className="p-2 border border-gray-300">{quotation.processorCost}</td>
+                        <td className="p-2 border border-gray-300">{quotation.processorGST}</td>
                     </tr>
                 )}
                  {quotation.hasInstall && (
                     <tr className="border border-gray-300">
-                        <td className="p-1 border border-gray-300">Installation</td>
-                        <td className="p-1 border border-gray-300"></td>
-                        <td className="p-1 border border-gray-300">{quotation.installCost}</td>
-                        <td className="p-1 border border-gray-300">{quotation.installGST}</td>
+                        <td className="p-2 border border-gray-300">Installation</td>
+                        <td className="p-2 border border-gray-300"></td>
+                        <td className="p-2 border border-gray-300">{quotation.installCost}</td>
+                        <td className="p-2 border border-gray-300">{quotation.installGST}</td>
                     </tr>
                 )}
                 
 
                 
                 <tr className="border border-gray-300 font-bold">
-                    <td className="p-1 border border-gray-300">Grand Total</td>
-                    <td className="p-1 border border-gray-300"></td>
-                    <td className="p-1 border border-gray-300">{quotation.totalCost}</td>
-                    <td className="p-1 border border-gray-300"></td>
+                    <td className="p-2 border border-gray-300">Grand Total</td>
+                    <td className="p-2 border border-gray-300"></td>
+                    <td className="p-2 border border-gray-300">{quotation.totalCost}</td>
+                    <td className="p-2 border border-gray-300"></td>
                 </tr>
                 <tr className="border border-gray-300 font-bold">
-                     <td className="p-1 border border-gray-300" colSpan="3">Grand Total incl GST</td>
-                     <td className="p-1 border border-gray-300 text-base">{quotation.totalGST}</td>
+                     <td className="p-2 border border-gray-300" colSpan="3">Grand Total incl GST</td>
+                     <td className="p-2 border border-gray-300 text-base">{quotation.totalGST}</td>
                 </tr>
             </tbody>
         </table>
