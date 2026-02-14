@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 
 const SeriesConfig = ({ value, onChange, seriesList }) => {
   return (
-    <div className="flex flex-col m-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+    <div className="flex flex-col mb-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
       <h1 className="text-gray-700 font-bold mb-4 dark:text-white">Home Theatre Channel</h1>
       <div className="relative">
          <select

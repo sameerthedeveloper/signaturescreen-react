@@ -2,7 +2,7 @@ import React from 'react';
 
 const PixelConfig = ({ hPixels, vPixels, totalPixels }) => {
   return (
-    <div className="flex flex-col m-4 bg-white p-6 gap-4 rounded-2xl shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+    <div className="flex flex-col mb-4 bg-white p-6 gap-4 rounded-2xl shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
       <h1 className="text-gray-700 font-bold dark:text-white">Pixel Configuration</h1>
 
       <div className="flex items-center gap-4">
