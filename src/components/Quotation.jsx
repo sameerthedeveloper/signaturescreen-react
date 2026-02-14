@@ -101,9 +101,9 @@ const Quotation = ({ quotation }) => {
       <div id="pdf-target" className="max-w-[210mm] mx-auto p-4 lg:p-8 bg-white text-black text-sm font-sans shadow-md rounded-md print:shadow-none print:w-full">
         
         {/* Unified Title */}
-        <h1 className="text-2xl font-bold mb-8 text-center uppercase tracking-widest">QUOTATION</h1>
+        <h1 className="text-xl font-bold mb-4 text-center uppercase tracking-widest">QUOTATION</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-2 gap-6 mb-4 text-xs">
             <div>
                 <h2 className="font-semibold">From:</h2>
                 <p>CINEMA FOCUS (INDIA) PRIVATE LIMITED</p>
@@ -125,124 +125,124 @@ const Quotation = ({ quotation }) => {
         </div>
 
         {/* Details Table */}
-        <table className="w-full table-auto border border-collapse mb-8 text-left text-sm">
+        <table className="w-full table-auto border border-collapse mb-4 text-left text-xs">
             <tbody>
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100 w-1/2">Signature Screen</th>
-                    <td className="p-2">{quotation.series}</td>
+                    <th className="p-1 bg-gray-100 w-1/2">Signature Screen</th>
+                    <td className="p-1">{quotation.series}</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">Screen W x H</th>
-                    <td className="p-2">{quotation.whpanels}</td>
+                    <th className="p-1 bg-gray-100">Screen W x H</th>
+                    <td className="p-1">{quotation.whpanels}</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">Panel Count</th>
-                    <td className="p-2">{quotation.totalPanels} {quotation.extraPanels > 0 && `(+${quotation.extraPanels} Spares)`}</td>
+                    <th className="p-1 bg-gray-100">Panel Count</th>
+                    <td className="p-1">{quotation.totalPanels} {quotation.extraPanels > 0 && `(+${quotation.extraPanels} Spares)`}</td>
                 </tr>
                 {quotation.extraPanels > 0 && (
                     <tr className="border border-gray-300">
-                        <th className="p-2 bg-gray-100">Total Panels (with Spares)</th>
-                        <td className="p-2">{quotation.grandTotalPanels}</td>
+                        <th className="p-1 bg-gray-100">Total Panels (with Spares)</th>
+                        <td className="p-1">{quotation.grandTotalPanels}</td>
                     </tr>
                 )}
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">Diagonal</th>
-                    <td className="p-2">{quotation.diagonal} inches</td>
+                    <th className="p-1 bg-gray-100">Diagonal</th>
+                    <td className="p-1">{quotation.diagonal} inches</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">Area (sq.ft)</th>
-                    <td className="p-2">{quotation.areaft} ft²</td>
+                    <th className="p-1 bg-gray-100">Area (sq.ft)</th>
+                    <td className="p-1">{quotation.areaft} ft²</td>
                 </tr>
                 
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">W/H (mm) (With Wood Work)</th>
-                    <td className="p-2">{quotation.wwMmStr} mm</td>
+                    <th className="p-1 bg-gray-100">W/H (mm) (With Wood Work)</th>
+                    <td className="p-1">{quotation.wwMmStr} mm</td>
                 </tr>
                  <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">W/H (in) (With Wood Work)</th>
-                    <td className="p-2">{quotation.wwInStr} in</td>
+                    <th className="p-1 bg-gray-100">W/H (in) (With Wood Work)</th>
+                    <td className="p-1">{quotation.wwInStr} in</td>
                 </tr>
                  <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">W/H (mm) (Without Wood Work)</th>
-                    <td className="p-2">{quotation.hwMmStr} mm</td>
+                    <th className="p-1 bg-gray-100">W/H (mm) (Without Wood Work)</th>
+                    <td className="p-1">{quotation.hwMmStr} mm</td>
                 </tr>
                  <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">W/H (in) (Without Wood Work)</th>
-                    <td className="p-2">{quotation.hwInStr} in</td>
+                    <th className="p-1 bg-gray-100">W/H (in) (Without Wood Work)</th>
+                    <td className="p-1">{quotation.hwInStr} in</td>
                 </tr>
 
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">Resolution</th>
-                    <td className="p-2">{quotation.resolution}</td>
+                    <th className="p-1 bg-gray-100">Resolution</th>
+                    <td className="p-1">{quotation.resolution}</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">Total Pixels</th>
-                    <td className="p-2">{quotation.pixels}</td>
+                    <th className="p-1 bg-gray-100">Total Pixels</th>
+                    <td className="p-1">{quotation.pixels}</td>
                 </tr>
             </tbody>
         </table>
 
         {/* Pricing Table */}
-        <table className="w-full table-auto border border-collapse text-left mb-8 text-sm">
+        <table className="w-full table-auto border border-collapse text-left mb-4 text-xs">
             <thead className="bg-gray-100">
                 <tr>
-                    <th className="p-2 border border-gray-300">Item</th>
-                    <th className="p-2 border border-gray-300">Details</th>
-                    <th className="p-2 border border-gray-300">Amount (excl GST)</th>
-                    <th className="p-2 border border-gray-300">Amount (incl GST)</th>
+                    <th className="p-1 border border-gray-300">Item</th>
+                    <th className="p-1 border border-gray-300">Details</th>
+                    <th className="p-1 border border-gray-300">Amount (excl GST)</th>
+                    <th className="p-1 border border-gray-300">Amount (incl GST)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr className="border border-gray-300">
-                    <td className="p-2 border border-gray-300">Signature Screen</td>
-                    <td className="p-2 border border-gray-300"></td>
-                     <td className="p-2 border border-gray-300">{quotation.panelprice}</td>
-                    <td className="p-2 border border-gray-300">{quotation.extraPanels > 0 ? '' : quotation.panelGST}</td>
+                    <td className="p-1 border border-gray-300">Signature Screen</td>
+                    <td className="p-1 border border-gray-300"></td>
+                     <td className="p-1 border border-gray-300">{quotation.panelprice}</td>
+                    <td className="p-1 border border-gray-300">{quotation.extraPanels > 0 ? '' : quotation.panelGST}</td>
                 </tr>
                  {quotation.extraPanels > 0 && (
                     <tr className="border border-gray-300">
-                        <td className="p-2 border border-gray-300">Additional Panels (Spares)</td>
-                        <td className="p-2 border border-gray-300">{quotation.extraPanels} Nos</td>
-                        <td className="p-2 border border-gray-300">{quotation.extraPanelsCost}</td>
-                        <td className="p-2 border border-gray-300"></td>
+                        <td className="p-1 border border-gray-300">Additional Panels (Spares)</td>
+                        <td className="p-1 border border-gray-300">{quotation.extraPanels} Nos</td>
+                        <td className="p-1 border border-gray-300">{quotation.extraPanelsCost}</td>
+                        <td className="p-1 border border-gray-300"></td>
                     </tr>
                 )}
                 {quotation.hasProcessor && (
                     <tr className="border border-gray-300">
-                        <td className="p-2 border border-gray-300">Processor</td>
-                        <td className="p-2 border border-gray-300">{quotation.processor}</td>
-                        <td className="p-2 border border-gray-300">{quotation.processorCost}</td>
-                        <td className="p-2 border border-gray-300">{quotation.processorGST}</td>
+                        <td className="p-1 border border-gray-300">Processor</td>
+                        <td className="p-1 border border-gray-300">{quotation.processor}</td>
+                        <td className="p-1 border border-gray-300">{quotation.processorCost}</td>
+                        <td className="p-1 border border-gray-300">{quotation.processorGST}</td>
                     </tr>
                 )}
                  {quotation.hasInstall && (
                     <tr className="border border-gray-300">
-                        <td className="p-2 border border-gray-300">Installation</td>
-                        <td className="p-2 border border-gray-300"></td>
-                        <td className="p-2 border border-gray-300">{quotation.installCost}</td>
-                        <td className="p-2 border border-gray-300">{quotation.installGST}</td>
+                        <td className="p-1 border border-gray-300">Installation</td>
+                        <td className="p-1 border border-gray-300"></td>
+                        <td className="p-1 border border-gray-300">{quotation.installCost}</td>
+                        <td className="p-1 border border-gray-300">{quotation.installGST}</td>
                     </tr>
                 )}
                 
 
                 
                 <tr className="border border-gray-300 font-bold">
-                    <td className="p-2 border border-gray-300">Grand Total</td>
-                    <td className="p-2 border border-gray-300"></td>
-                    <td className="p-2 border border-gray-300">{quotation.totalCost}</td>
-                    <td className="p-2 border border-gray-300"></td>
+                    <td className="p-1 border border-gray-300">Grand Total</td>
+                    <td className="p-1 border border-gray-300"></td>
+                    <td className="p-1 border border-gray-300">{quotation.totalCost}</td>
+                    <td className="p-1 border border-gray-300"></td>
                 </tr>
                 <tr className="border border-gray-300 font-bold">
-                     <td className="p-2 border border-gray-300" colSpan="3">Grand Total incl GST</td>
-                     <td className="p-2 border border-gray-300 text-lg">{quotation.totalGST}</td>
+                     <td className="p-1 border border-gray-300" colSpan="3">Grand Total incl GST</td>
+                     <td className="p-1 border border-gray-300 text-base">{quotation.totalGST}</td>
                 </tr>
             </tbody>
         </table>
 
 
-        <div className="mt-4 pdf-footer-section break-inside-avoid" style={{ pageBreakInside: 'avoid' }}>
-            <h1 className="text-lg font-bold text-gray-800 mb-6">Terms & Conditions</h1>
-            <div className="text-sm text-gray-600 space-y-4">
+        <div className="mt-2 pdf-footer-section break-inside-avoid" style={{ pageBreakInside: 'avoid' }}>
+            <h1 className="text-base font-bold text-gray-800 mb-2">Terms & Conditions</h1>
+            <div className="text-xs text-gray-600 space-y-2">
                 <div>
                     <strong>Delivery Details:</strong><br/>
                     • Delivery within 30 to 45 days from the date of order confirmation.
