@@ -125,7 +125,7 @@ const Quotation = ({ quotation }) => {
   };
 
   return (
-    <div className="flex flex-col m-4 lg:m-0 bg-white">
+    <div className="flex flex-col lg:m-0 bg-white">
       <div id="pdf-target" className="max-w-[210mm] mx-auto p-4 lg:p-8 bg-white text-black text-sm font-sans shadow-md rounded-md print:shadow-none print:w-full">
         
         {/* Unified Title */}
@@ -296,7 +296,7 @@ const Quotation = ({ quotation }) => {
 
       </div>
 
-      <div className="flex flex-col m-4 bg-white p-3 gap-2 rounded-2xl shadow-2xl mb-20 dark:bg-gray-700 dark:text-white print:hidden">
+      <div className="flex flex-col bg-white p-3 gap-2 rounded-2xl shadow-2xl mb-24 lg:mb-20 dark:bg-gray-700 dark:text-white print:hidden">
          <button 
             onClick={handlePrint}
             className="bg-blue-200 p-3 rounded-xl shadow border border-black flex justify-center items-center font-medium dark:bg-gray-600 dark:text-white dark:border-white hover:bg-blue-300 transition-colors"
