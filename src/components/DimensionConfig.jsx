@@ -59,6 +59,18 @@ const DimensionConfig = ({ hPanels, setHPanels, vPanels, setVPanels, totalPanels
             <div className="bg-gray-50 border border-gray-200 p-2 rounded text-sm text-center font-medium dark:bg-gray-700 dark:border-gray-600">{dimensions.heightMm}</div>
         </div>
       </div>
+
+      <h2 className="text-sm font-semibold text-gray-500">Dimensions (in)</h2>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-col">
+            <span className="text-xs text-gray-400">Width</span>
+            <div className="bg-gray-50 border border-gray-200 p-2 rounded text-sm text-center font-medium dark:bg-gray-700 dark:border-gray-600">{dimensions.widthIn}</div>
+        </div>
+        <div className="flex flex-col">
+            <span className="text-xs text-gray-400">Height</span>
+            <div className="bg-gray-50 border border-gray-200 p-2 rounded text-sm text-center font-medium dark:bg-gray-700 dark:border-gray-600">{dimensions.heightIn}</div>
+        </div>
+      </div>
       
        <h2 className="text-sm font-semibold text-gray-500">With Wood Frame (mm)</h2>
        <div className="grid grid-cols-2 gap-4">
