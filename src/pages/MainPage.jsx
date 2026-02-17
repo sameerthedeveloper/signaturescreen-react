@@ -14,7 +14,7 @@ import BottomNav from '../components/BottomNav';
 import { useData } from '../contexts/DataContext';
 
 // Constants kept for default/fallback or component logic references
-const LEDGST = 28;
+const LEDGST = 18;
 const processorGST = 18;
 
 function MainPage() {
