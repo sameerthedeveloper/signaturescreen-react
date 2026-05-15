@@ -158,7 +158,7 @@ function MainPage() {
     grandTotalPanels: grandTotalPanels,
     diagonal: diagInInches.toFixed(2),
     areaft: areaFt.toFixed(2),
-    resolution: `${vPixels} x ${hPixels}`,
+    resolution: `${hPixels} x ${vPixels}`,
     pixels: totalPixels.toLocaleString(),
     
     panelprice: totalPanelPriceExclGst.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2}),

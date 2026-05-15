@@ -8,13 +8,13 @@ const PixelConfig = ({ hPixels, vPixels, totalPixels }) => {
       <div className="flex items-center gap-4">
         <div className="flex-1">
              <div className="bg-gray-50 border border-gray-200 p-2.5 rounded-lg text-sm text-center font-medium text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                {vPixels}
+                {hPixels}
              </div>
         </div>
         <div className="text-gray-400 font-bold">x</div>
         <div className="flex-1">
              <div className="bg-gray-50 border border-gray-200 p-2.5 rounded-lg text-sm text-center font-medium text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                {hPixels}
+                {vPixels}
              </div>
         </div>
       </div>
