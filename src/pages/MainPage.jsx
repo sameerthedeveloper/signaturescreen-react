@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Header from '../components/Header';
 import CustomerConfig from '../components/CustomerConfig';
 import SeriesConfig from '../components/SeriesConfig';
@@ -44,27 +44,10 @@ function MainPage() {
   const [includeProcessor, setIncludeProcessor] = useState(true);
   const [includeInstallation, setIncludeInstallation] = useState(true);
 
-  // Set default series when loaded - REMOVED to allow disabled default
-  // useEffect(() => {
-  //   if (seriesList.length > 0 && !series) {
-  //       setSeries(seriesList[0].value);
-  //   }
-  // }, [seriesList, series]);
-
-  // useEffect(() => {
-  //   if (processorList.length > 0 && !selectedProcessor) {
-  //       setSelectedProcessor(processorList[0].value);
-  //   }
-  // }, [processorList, selectedProcessor]);
-
-  // useEffect(() => {
-  //   if (installOptions.length > 0 && !selectedInstall) {
-  //       setSelectedInstall(installOptions[0].value);
-  //   }
-  // }, [installOptions, selectedInstall]);
-
   // Find current series object
   const currentSeriesObj = seriesList.find(s => s.value === series) || {};
+
+
   const currentHPixel = currentSeriesObj.hPixel || 0;
   const currentVPixel = currentSeriesObj.vPixel || 0;
   const currentCost = currentSeriesObj.cost || 0;
@@ -77,8 +60,11 @@ function MainPage() {
   const grandTotalPanels = totalPanels + extraVal;
 
   // Dimensions
-  const heightMm = hVal * 337.5;
-  const widthMm = vVal * 600;
+  const panelWidth = currentSeriesObj.panelWidth || 600;
+  const panelHeight = currentSeriesObj.panelHeight || 337.5;
+
+  const widthMm = hVal * panelWidth;
+  const heightMm = vVal * panelHeight;
   
   const diagInInches = Math.sqrt(heightMm ** 2 + widthMm ** 2) / 25.4;
   
@@ -98,8 +84,8 @@ function MainPage() {
   const pricePerSqM = areaMm * (parseFloat(msp) || 0);
 
   // Pixels
-  const vPixels = vVal * currentVPixel;
-  const hPixels = hVal * currentHPixel;
+  const vPixels = hVal * currentVPixel; // Horizontal Resolution
+  const hPixels = vVal * currentHPixel; // Vertical Resolution
   const totalPixels = vPixels * hPixels;
 
   // Pricing
@@ -166,7 +152,7 @@ function MainPage() {
   // Data for Quotation Prop
   const quotationData = {
     series: currentSeriesObj.label || 'Unknown Series',
-    whpanels: `${vVal} x ${hVal}`,
+    whpanels: `${hVal} x ${vVal}`,
     totalPanels: totalPanels,
     extraPanels: extraVal,
     grandTotalPanels: grandTotalPanels,

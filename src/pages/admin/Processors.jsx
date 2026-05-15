@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useData } from '../../contexts/DataContext';
 import { db } from '../../lib/firebase';
-import { collection, addDoc, doc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 
 const Processors = () => {
     const { processorList, refreshData } = useData();
+    const [editingItem, setEditingItem] = useState(null);
 
     const handleDelete = async (id) => {
         if(window.confirm("Delete this processor?")) {
@@ -18,7 +19,12 @@ const Processors = () => {
         }
     };
 
-    const handleAdd = async (e) => {
+    const handleEdit = (item) => {
+        setEditingItem(item);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = {
@@ -28,40 +34,58 @@ const Processors = () => {
         };
 
         try {
-            await addDoc(collection(db, 'processors'), data);
+            if (editingItem) {
+                await updateDoc(doc(db, 'processors', editingItem.id), data);
+                setEditingItem(null);
+            } else {
+                await addDoc(collection(db, 'processors'), data);
+            }
             e.target.reset();
             refreshData();
         } catch(err) {
             console.error(err);
-            alert("Error adding item");
+            alert("Error saving item");
         }
     };
 
     return (
-        <div className="animate-fade-in max-w-6xl mx-auto space-y-8">
+        <div className="animate-fade-in max-w-6xl mx-auto space-y-8 pb-20">
             <h1 className="text-3xl font-bold text-gray-800">Processors</h1>
             
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
                 <h2 className="text-lg font-semibold mb-6 flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm">+</span>
-                    Add Processor
+                    <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm">
+                        {editingItem ? '✎' : '+'}
+                    </span>
+                    {editingItem ? `Edit Processor: ${editingItem.label}` : 'Add Processor'}
                 </h2>
-                <form onSubmit={handleAdd} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 items-end">
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 items-end">
+                     <div className="lg:col-span-4">
+                        <label className="block text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wider">Label</label>
+                        <input name="label" defaultValue={editingItem?.label || ''} placeholder="e.g. CF40-4K" required className="w-full border border-gray-200 p-3 rounded-lg text-sm bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition" />
+                     </div>
                      <div className="lg:col-span-3">
-                        <label className="block text-xs font-semibold text-gray-500 mb-1 uppercase">Label</label>
-                        <input name="label" placeholder="e.g. CF40-4K" required className="w-full border border-gray-200 p-3 rounded-lg text-sm bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition" />
+                        <label className="block text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wider">Value/ID</label>
+                        <input name="value" defaultValue={editingItem?.value || ''} placeholder="e.g. cf40" required className="w-full border border-gray-200 p-3 rounded-lg text-sm bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition" />
                      </div>
-                     <div className="lg:col-span-2">
-                        <label className="block text-xs font-semibold text-gray-500 mb-1 uppercase">Value/ID</label>
-                        <input name="value" placeholder="e.g. cf40" required className="w-full border border-gray-200 p-3 rounded-lg text-sm bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition" />
-                     </div>
-                     <div className="lg:col-span-2">
-                        <label className="block text-xs font-semibold text-gray-500 mb-1 uppercase">Cost</label>
-                        <input name="cost" type="number" placeholder="Cost" required className="w-full border border-gray-200 p-3 rounded-lg text-sm bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition" />
+                     <div className="lg:col-span-3">
+                        <label className="block text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wider">Cost (excl GST)</label>
+                        <input name="cost" type="number" defaultValue={editingItem?.cost || ''} placeholder="Cost" required className="w-full border border-gray-200 p-3 rounded-lg text-sm bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition" />
                      </div>
                      
-                     <div className="lg:col-span-1">
-                        <button className="w-full bg-black text-white p-3 rounded-lg text-sm font-semibold hover:bg-gray-800 transition shadow-lg shadow-gray-200">Add</button>
+                     <div className="lg:col-span-2 flex gap-2">
+                        {editingItem && (
+                            <button 
+                                type="button"
+                                onClick={() => setEditingItem(null)}
+                                className="flex-1 bg-gray-100 text-gray-600 p-3 rounded-lg text-sm font-semibold hover:bg-gray-200 transition"
+                            >
+                                Cancel
+                            </button>
+                        )}
+                        <button className="flex-1 bg-black text-white p-3 rounded-lg text-sm font-semibold hover:bg-gray-800 transition shadow-lg shadow-gray-200">
+                            {editingItem ? 'Update' : 'Add'}
+                        </button>
                      </div>
                 </form>
             </div>
@@ -79,8 +103,19 @@ const Processors = () => {
                               <div className="col-span-4 font-medium text-gray-900">{item.label}</div>
                               <div className="col-span-3 text-sm text-gray-500 font-mono">{item.value}</div>
                               <div className="col-span-3 text-sm font-medium text-gray-700">₹{item.cost?.toLocaleString()}</div>
-                              <div className="col-span-2 text-right opacity-0 group-hover:opacity-100 transition-opacity">
-                                  <button onClick={() => handleDelete(item.id)} className="text-red-500 hover:text-red-700 bg-red-50 px-3 py-1 rounded text-xs font-bold">Delete</button>
+                              <div className="col-span-2 text-right flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <button 
+                                    onClick={() => handleEdit(item)} 
+                                    className="text-blue-500 hover:text-blue-700 bg-blue-50 px-3 py-1 rounded text-xs font-bold"
+                                  >
+                                    Edit
+                                  </button>
+                                  <button 
+                                    onClick={() => handleDelete(item.id)} 
+                                    className="text-red-500 hover:text-red-700 bg-red-50 px-3 py-1 rounded text-xs font-bold"
+                                  >
+                                    Delete
+                                  </button>
                               </div>
                          </div>
                      ))}
@@ -92,3 +127,4 @@ const Processors = () => {
 };
 
 export default Processors;
+
