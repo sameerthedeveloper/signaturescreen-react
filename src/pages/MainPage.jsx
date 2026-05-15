@@ -152,7 +152,7 @@ function MainPage() {
   // Data for Quotation Prop
   const quotationData = {
     series: currentSeriesObj.label || 'Unknown Series',
-    whpanels: `${hVal} x ${vVal}`,
+    whpanels: `${vVal} x ${hVal}`,
     totalPanels: totalPanels,
     extraPanels: extraVal,
     grandTotalPanels: grandTotalPanels,

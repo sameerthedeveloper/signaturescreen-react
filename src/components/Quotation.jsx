@@ -160,7 +160,7 @@ const Quotation = ({ quotation }) => {
                     <td className="p-2">{quotation.series}</td>
                 </tr>
                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">Screen W x H</th>
+                    <th className="p-2 bg-gray-100">Screen H x W</th>
                     <td className="p-2">{quotation.whpanels}</td>
                 </tr>
                 <tr className="border border-gray-300">
@@ -223,7 +223,7 @@ const Quotation = ({ quotation }) => {
             <tbody>
                 <tr className="border border-gray-300">
                     <td className="p-2 border border-gray-300">Signature Screen</td>
-                    <td className="p-2 border border-gray-300"></td>
+                    <td className="p-2 border border-gray-300">{quotation.series}</td>
                      <td className="p-2 border border-gray-300">{quotation.panelprice}</td>
                     <td className="p-2 border border-gray-300">{quotation.extraPanels > 0 ? '' : quotation.panelGST}</td>
                 </tr>
