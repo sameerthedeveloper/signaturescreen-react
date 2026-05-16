@@ -186,15 +186,15 @@ const Quotation = ({ quotation }) => {
                     <th className="p-2 bg-gray-100">W/H (mm) (With Wood Work)</th>
                     <td className="p-2">{quotation.wwMmStr} mm</td>
                 </tr>
-                 <tr className="border border-gray-300">
-                    <th className="p-2 bg-gray-100">W/H (in) (With Wood Work)</th>
-                    <td className="p-2">{quotation.wwInStr} in</td>
-                </tr>
-                 <tr className="border border-gray-300">
+                <tr className="border border-gray-300">
                     <th className="p-2 bg-gray-100">W/H (mm) (Without Wood Work)</th>
                     <td className="p-2">{quotation.hwMmStr} mm</td>
                 </tr>
-                 <tr className="border border-gray-300">
+                <tr className="border border-gray-300">
+                    <th className="p-2 bg-gray-100">W/H (in) (With Wood Work)</th>
+                    <td className="p-2">{quotation.wwInStr} in</td>
+                </tr>
+                <tr className="border border-gray-300">
                     <th className="p-2 bg-gray-100">W/H (in) (Without Wood Work)</th>
                     <td className="p-2">{quotation.hwInStr} in</td>
                 </tr>
