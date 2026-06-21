@@ -7,17 +7,7 @@ const DimensionConfig = ({ hPanels, setHPanels, vPanels, setVPanels, totalPanels
 
       {/* Panels Inputs */}
       <div className="grid grid-cols-3 gap-4">
-        {/* V-Panels */}
-        <div className="flex flex-col">
-            <label className="text-xs font-semibold text-gray-500 mb-1">V-Panels</label>
-            <input
-                type="number"
-                placeholder="0"
-                value={vPanels}
-                onChange={(e) => setVPanels(e.target.value)}
-                className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-            />
-        </div>
+        
 
          {/* H-Panels */}
          <div className="flex flex-col">
@@ -27,6 +17,18 @@ const DimensionConfig = ({ hPanels, setHPanels, vPanels, setVPanels, totalPanels
                 placeholder="0"
                 value={hPanels}
                 onChange={(e) => setHPanels(e.target.value)}
+                className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            />
+        </div>
+
+        {/* V-Panels */}
+        <div className="flex flex-col">
+            <label className="text-xs font-semibold text-gray-500 mb-1">V-Panels</label>
+            <input
+                type="number"
+                placeholder="0"
+                value={vPanels}
+                onChange={(e) => setVPanels(e.target.value)}
                 className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             />
         </div>
